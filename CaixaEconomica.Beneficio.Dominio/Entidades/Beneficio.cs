@@ -1,10 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CaixaEconomica.Beneficio.Dominio.Entidades
 {
-    class Beneficio
+    public class Beneficio : Entidade
     {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public DateTime  DataInicioVigencia { get; set; }
+        public DateTime? DataFimVigencia { get; set; }
+        public bool Ativo { get; set; }
+
     }
 }

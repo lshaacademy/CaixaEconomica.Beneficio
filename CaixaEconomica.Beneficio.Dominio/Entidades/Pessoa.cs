@@ -1,10 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CaixaEconomica.Beneficio.Dominio.Entidades
+﻿namespace CaixaEconomica.Beneficio.Dominio.Entidades
 {
-    class Pessoa
+    public class Pessoa: Entidade  
     {
+        public int Id { get; set; }
+        public string Cpf { get; set; }
+        public string Nome { get; set; }
+        public string SobreNome  { get; set; }
+
+        public int Idade { get; set; }
+        public int QuantidadeFilhos { get; set; }
+
+        /*
+         * 02 Empregado
+         * 11 Profissional Liberal
+         */
+        public int CodigoOcupacao { get; set; }
+
+
+
     }
 }
