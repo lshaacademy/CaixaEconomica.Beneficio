@@ -5,7 +5,11 @@ namespace CaixaEconomica.Beneficio.Dominio.Entidades
     public class BeneficioPessoa: Entidade
     {
         public int BeneficioId { get; set; }
+        public virtual Beneficio Beneficio { get; set; }
+
         public int PessoaId { get; set; }
+        public virtual Pessoa Pessoa { get; set; }
+
         public DateTime DataInicioBeneficio { get; set; }
         public DateTime DataFimBeneficio { get; set; }
         public decimal ValorBeneficio { get; set; }

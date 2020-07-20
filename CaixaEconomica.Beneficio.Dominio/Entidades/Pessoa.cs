@@ -30,7 +30,10 @@ namespace CaixaEconomica.Beneficio.Dominio.Entidades
                 _enderecos.Add(endereco);
         }
 
-
-                        
+        //Relacionamento de 1(Pessoa) Para Muitos(BeneficioPessoa)
+        // Backing Field
+        private readonly HashSet<BeneficioPessoa> _beneficioPessoas = new HashSet<BeneficioPessoa>();
+        public IEnumerable<BeneficioPessoa> BeneficioPessoas => _beneficioPessoas.ToList().AsReadOnly();
+                                        
     }
 }
