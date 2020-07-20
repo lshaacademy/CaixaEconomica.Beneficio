@@ -4,7 +4,8 @@ using System.Text;
 
 namespace CaixaEconomica.Beneficio.Dominio.Entidades
 {
-    public class Endereco: Entidade
+    public class Endereco: Entidade, IEquatable<Endereco>
+        
     {
         public int Id { get; set; }
         public string Rua { get; set; }
@@ -20,6 +21,15 @@ namespace CaixaEconomica.Beneficio.Dominio.Entidades
         //Relacionamento de 1(Endereco) para 1(Pessoa)
         public int PessoaId { get; set; }
         public Pessoa Pessoa { get; set; }
-        
+
+        public bool Equals(Endereco other)
+        {
+            return Id.Equals(other.Id);
+        }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace CaixaEconomica.Beneficio.Dominio.Entidades
 {
@@ -18,16 +19,18 @@ namespace CaixaEconomica.Beneficio.Dominio.Entidades
          */
         public int CodigoOcupacao { get; set; }
 
-        //Relacionamento de 1(Pessoa) para Muitos(Endereco)        
-        public virtual ICollection<Endereco> Enderecos { get; set; }
+        //Relacionamento de 1(Pessoa) para Muitos(Endereco)
+        // Backing Field
+        private readonly HashSet<Endereco> _enderecos = new HashSet<Endereco>();
+        public IEnumerable<Endereco> Enderecos => _enderecos.ToList().AsReadOnly();
 
-        public Pessoa()
+        public void AdicionarEndereco(Endereco endereco)
         {
-            Enderecos = new List<Endereco>();
+            if (endereco != null)
+                _enderecos.Add(endereco);
         }
 
 
-
-
+                        
     }
 }
