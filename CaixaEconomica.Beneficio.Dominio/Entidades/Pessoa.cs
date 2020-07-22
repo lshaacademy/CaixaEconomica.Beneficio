@@ -26,8 +26,10 @@ namespace CaixaEconomica.Beneficio.Dominio.Entidades
 
         public void AdicionarEndereco(Endereco endereco)
         {
-            if (endereco != null)
-                _enderecos.Add(endereco);
+            if(endereco == null)
+            {                
+                //devolver uma mensagem
+            }
         }
 
         //Relacionamento de 1(Pessoa) Para Muitos(BeneficioPessoa)
