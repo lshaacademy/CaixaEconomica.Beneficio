@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CaixaEconomica.Beneficio.Dominio.Notification;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CaixaEconomica.Beneficio.Dominio.Entidades
@@ -24,11 +25,28 @@ namespace CaixaEconomica.Beneficio.Dominio.Entidades
         private readonly HashSet<Endereco> _enderecos = new HashSet<Endereco>();
         public IEnumerable<Endereco> Enderecos => _enderecos.ToList().AsReadOnly();
 
+        public Pessoa()
+        {
+            // vai ficar dessa forma enquanto a injeção de dep.. não estiver configurado
+            SetNotificacao(new NotificacaoDominio());
+        }
+
         public void AdicionarEndereco(Endereco endereco)
         {
             if(endereco == null)
-            {                
-                //devolver uma mensagem
+            {
+                NotificacaoDominio.AddErro("Erro: endereco deve ser instanciado");
+            }
+            else
+            {
+                // vai ficar dessa forma enquanto a injeção de dep.. não estiver configurado
+                endereco.SetNotificacao(new NotificacaoDominio());
+
+                endereco.Validar();
+                if (endereco.EhValido())
+                    _enderecos.Add(endereco);
+                else
+                    NotificacaoDominio.AddErro("Endereco não foi adicionado porque não é válido");                        
             }
         }
 
