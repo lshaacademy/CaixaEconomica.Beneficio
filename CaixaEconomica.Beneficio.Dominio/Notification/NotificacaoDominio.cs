@@ -26,7 +26,9 @@ namespace CaixaEconomica.Beneficio.Dominio.Notification
 
         public bool Validado()
         {
-            return !_erroMensagem.Any();
+            if (_erroMensagem.Any())
+                throw new ArgumentException(string.Join(". ", _erroMensagem.ToArray()));
+            return true;
         }
 
         public bool TemAviso()

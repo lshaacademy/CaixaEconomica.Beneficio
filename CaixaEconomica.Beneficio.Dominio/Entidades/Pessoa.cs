@@ -40,7 +40,7 @@ namespace CaixaEconomica.Beneficio.Dominio.Entidades
             else
             {
                 // vai ficar dessa forma enquanto a injeção de dep.. não estiver configurado
-                endereco.SetNotificacao(new NotificacaoDominio());
+                endereco.SetNotificacao(NotificacaoDominio);
 
                 endereco.Validar();
                 if (endereco.EhValido())
